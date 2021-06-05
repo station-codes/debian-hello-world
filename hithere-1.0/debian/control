@@ -1,16 +1,16 @@
-Source: hello-world
+Source: hithere
 Section: misc
 Priority: extra
 Maintainer: Hélder Silva <hsilva@keep.pt>
-Build-Depends: debhelper (>= 8.0.0), perl
+Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.2
 Homepage: http://www.keep.pt/
 
-Package: hello-world
+Package: hithere
 Architecture: all 
-Depends: ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: This is a dummy package with a hello world echo script 
- This is the long description...
+ This is the long descriptin...
  This is the long description...
  This is the long description...
  This is the long description...
