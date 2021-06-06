@@ -1,11 +1,10 @@
 prefix = /usr/local
 CXXFILES = hithere.c
-CXXFLAGS = -Wall -o hithere -lftdi1
-INCLUDE = -I/usr/include/libftdi1/
-LIBS = -L/usr/lib/arm-linux-gnueabihf/
+CXXFLAGS = -Wall -o hithere
+LIBS = $(pkg-config --cflags --libs libftdi1) 
 
 all:
-	$(CC) $(CXXFILES) $(INCLUDE) $(LIBS) $(CXXFLAGS) 
+	$(CC) $(CXXFILES) $(LIBS) $(CXXFLAGS) 
 
 install:
 	install hithere $(DESTDIR)$(prefix)/bin

@@ -4,14 +4,14 @@ Binary: hithere
 Architecture: all
 Version: 1.0-1
 Checksums-Md5:
- d4f2e95699430d4606d5c033562585cb 4164 hithere_1.0-1_all.deb
+ b58c14dd7d60bf610a5b6c086471a1f5 4340 hithere_1.0-1_all.deb
 Checksums-Sha1:
- 6b56a41bc64d49ff0aa24642c3304a9e42f5a8e5 4164 hithere_1.0-1_all.deb
+ 27aec55ea17fbe5c87e861b86765e9b3fa4f0f08 4340 hithere_1.0-1_all.deb
 Checksums-Sha256:
- 36515e5c19a159508efd9c204d4c6a21bd84c466ee14b67b3a500c828a300581 4164 hithere_1.0-1_all.deb
+ 99529f028080e3a58b11f0e9c36e907bfdd1a6bb09cad2d18d666aa8dafbc891 4340 hithere_1.0-1_all.deb
 Build-Origin: Debian
 Build-Architecture: armhf
-Build-Date: Sat, 05 Jun 2021 18:26:42 +0000
+Build-Date: Sun, 06 Jun 2021 17:42:14 +0000
 Build-Tainted-By:
  merged-usr-via-symlinks
  usr-local-has-libraries

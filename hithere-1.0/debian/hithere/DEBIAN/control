@@ -2,7 +2,7 @@ Package: hithere
 Version: 1.0-1
 Architecture: all
 Maintainer: Hélder Silva <hsilva@keep.pt>
-Installed-Size: 20
+Installed-Size: 21
 Section: misc
 Priority: extra
 Homepage: http://www.keep.pt/
