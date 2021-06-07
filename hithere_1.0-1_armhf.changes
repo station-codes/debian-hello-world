@@ -15,11 +15,11 @@ Changes:
  .
    * Initial release. (Closes: #XXXXXX)
 Checksums-Sha1:
- 27aec55ea17fbe5c87e861b86765e9b3fa4f0f08 4340 hithere_1.0-1_all.deb
- cda513f9eb7c74eb8d990cecb7a68af7ce75a06f 4274 hithere_1.0-1_armhf.buildinfo
+ 1d6977b05dc2ba9f413537bcee7736bd6b297661 4912 hithere_1.0-1_all.deb
+ 65bd3ad971f5542ab00f98b086db90e665180d48 4292 hithere_1.0-1_armhf.buildinfo
 Checksums-Sha256:
- 99529f028080e3a58b11f0e9c36e907bfdd1a6bb09cad2d18d666aa8dafbc891 4340 hithere_1.0-1_all.deb
- bfca8e9533b1ad79aba79bfe3487b7e614be65b1d09f9982657cd14575670205 4274 hithere_1.0-1_armhf.buildinfo
+ d5a6e584844898ed66a2bc2c9b9ba504271ecfdf761ac46276f73117fa834d7f 4912 hithere_1.0-1_all.deb
+ 766b8bc7cc91c82ba75473f8804393cbc0f8050a61e2873fd0981b3e2f67fd6b 4292 hithere_1.0-1_armhf.buildinfo
 Files:
- b58c14dd7d60bf610a5b6c086471a1f5 4340 misc extra hithere_1.0-1_all.deb
- 592eb9507f975baef1e0198a658a3978 4274 misc extra hithere_1.0-1_armhf.buildinfo
+ f3d1eb9cfafc8280e025c03aa5af48fc 4912 misc extra hithere_1.0-1_all.deb
+ 483adadc8d2a2945b5742fab0d00e09f 4292 misc extra hithere_1.0-1_armhf.buildinfo

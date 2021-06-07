@@ -1,124 +1,112 @@
+/* bitbang_ft2232.c
 
-#include "ftdi.h"
+   Output some flickering in bitbang mode to the FT2232
+
+   Thanks to max@koeln.ccc.de for fixing and extending
+   the example for the second channel.
+
+   This program is distributed under the GPL, version 2
+*/
 
 #include <stdio.h>
-#include <fcntl.h>
-#include <string.h>
-#include <errno.h>
+#include <stdlib.h>
 #include <unistd.h>
+#include <ftdi.h>
 
-//#define PH0        224    // (32 * 7) + 0
-//#define PH2        226    // (32 * 7) + 2
+int main(int argc, char **argv)
+{
+    struct ftdi_context *ftdi, *ftdi2;
+    unsigned char buf[1];
+    int f,i;
 
-//#define GPIO_PATH  "/sys/class/gpio/gpio224/value"
-//#define GPIO_PATH  "/sys/class/gpio/gpio226/value"
+    // Init 1. channel
+    if ((ftdi = ftdi_new()) == 0)
+    {
+        fprintf(stderr, "ftdi_new failed\n");
+        return EXIT_FAILURE;
+    }
 
-int main() {
-	printf("led driver\n");
+    ftdi_set_interface(ftdi, INTERFACE_A);
+    f = ftdi_usb_open(ftdi, 0x0403, 0x6010);
+    if (f < 0 && f != -5)
+    {
+        fprintf(stderr, "unable to open ftdi device: %d (%s)\n", f, ftdi_get_error_string(ftdi));
+        ftdi_free(ftdi);
+        exit(-1);
+    }
+    printf("ftdi open succeeded(channel 1): %d\n",f);
 
-	/*
-	int counter = 10000;
-	int ret;
-	int fd;
-
-	fd = open(GPIO_PATH, O_RDWR);
-	if (fd < 0){
-		printf("could not open file\n");
-		return errno;
-	}
-
-	while(1){
-		counter = 665000;
-		printf("set\n");
-		while(counter-->0) {
-			ret = write(fd, "1", 1);
-		}
-		counter = 665000;
-		printf("clear\n");
-		while(counter-->0){
-			ret = write(fd, "0", 1);
-		}
-	}
-	return 0;
-	*/
-
-	int ret;
-	struct ftdi_context *ftdi;
-	struct ftdi_version_info version;
-	if ((ftdi = ftdi_new()) == 0)
-	{
-		fprintf(stderr, "ftdi_new failed\n");
-		return 1;
-	}
-
-	version = ftdi_get_library_version();
-	printf("Initialized libftdi %s (major: %d, minor: %d, micro: %d, snapshot ver: %s)\n",
-	version.version_str, version.major, version.minor, version.micro,
-	version.snapshot_str);
-
-	if ((ret = ftdi_usb_open(ftdi, 0x0403, 0x6010)) < 0){
-		fprintf(stderr, "unable to open ftdi device: %d (%s)\n", ret, ftdi_get_error_string(ftdi));
-		ftdi_free(ftdi);
-		return 1;
-	}
-	else {
-		printf("found module\n");
-
-
-    printf("enabling bitbang mode\n");
+    printf("enabling bitbang mode(channel 1)\n");
     ftdi_set_bitmode(ftdi, 0xFF, BITMODE_BITBANG);
 
-		  usleep(3 * 1000000);
-    int f,i;
-    unsigned char buf[1];
-
-    buf[0] = 0x0;
-    printf("turning everything on\n");
-    f = ftdi_write_data(ftdi, buf, 1);
-    if (f < 0)
+    // Init 2. channel
+    if ((ftdi2 = ftdi_new()) == 0)
     {
-        fprintf(stderr,"write failed for 0x%x, error %d (%s)\n",buf[0],f, ftdi_get_error_string(ftdi));
+        fprintf(stderr, "ftdi_new failed\n");
+        return EXIT_FAILURE;
     }
-
-    usleep(3 * 1000000);
-
-
-
-
-        buf[0] = 0xFF;
-    printf("turning everything off\n");
-    f = ftdi_write_data(ftdi, buf, 1);
-    if (f < 0)
+    ftdi_set_interface(ftdi2, INTERFACE_B);
+    f = ftdi_usb_open(ftdi2, 0x0403, 0x6010);
+    if (f < 0 && f != -5)
     {
-        fprintf(stderr,"write failed for 0x%x, error %d (%s)\n",buf[0],f, ftdi_get_error_string(ftdi));
+        fprintf(stderr, "unable to open ftdi device: %d (%s)\n", f, ftdi_get_error_string(ftdi2));
+        ftdi_free(ftdi2);
+        exit(-1);
     }
+    printf("ftdi open succeeded(channel 2): %d\n",f);
 
-    usleep(3 * 1000000);
+    printf("enabling bitbang mode (channel 2)\n");
+    ftdi_set_bitmode(ftdi2, 0xFF, BITMODE_BITBANG);
 
-    for (i = 0; i < 32; i++)
+    // Write data
+    printf("startloop\n");
+    while(1){
+
+    for (i = 0b0001; i <= 0b0111; i++)
     {
-        buf[0] =  0 | (0xFF ^ 1 << (i % 8));
-        if ( i > 0 && (i % 8) == 0)
-        {
-            printf("\n");
-        }
-        printf("%02hhx ",buf[0]);
-        fflush(stdout);
+        buf[0] =  i<<4;
+        printf("porta: %02i: 0x%02x \n",i,buf[0]);
         f = ftdi_write_data(ftdi, buf, 1);
         if (f < 0)
-        {
-            fprintf(stderr,"write failed for 0x%x, error %d (%s)\n",buf[0],f, ftdi_get_error_string(ftdi));
-        }
-        usleep(1 * 1000000);
-    }
-	}
- 
-	if ((ret = ftdi_usb_close(ftdi)) < 0){
-		fprintf(stderr, "unable to close ftdi device: %d (%s)\n", ret, ftdi_get_error_string(ftdi));
-		ftdi_free(ftdi);
-		return 1;
-	}
+            fprintf(stderr,"write failed on channel 1 for 0x%x, error %d (%s)\n", buf[0], f, ftdi_get_error_string(ftdi));
+        usleep(10 * 1000000);
 
-	ftdi_free(ftdi);
-	return 0;
+        buf[0] =  0x00;
+        printf("porta: %02i: 0x%02x \n",i,buf[0]);
+        f = ftdi_write_data(ftdi, buf, 1);
+        if (f < 0)
+            fprintf(stderr,"write failed on channel 1 for 0x%x, error %d (%s)\n", buf[0], f, ftdi_get_error_string(ftdi));
+        usleep(10 * 1000000);
+
+/*	
+        buf[0] =  0x1;
+        printf("portb: %02i: 0x%02x \n",i,buf[0]);
+        f = ftdi_write_data(ftdi2, buf, 1);
+        if (f < 0)
+            fprintf(stderr,"write failed on channel 2 for 0x%x, error %d (%s)\n", buf[0], f, ftdi_get_error_string(ftdi2));
+        usleep(1 * 100000);
+
+        buf[0] =  0x2;
+        printf("portb: %02i: 0x%02x \n",i,buf[0]);
+        f = ftdi_write_data(ftdi2, buf, 1);
+        if (f < 0)
+            fprintf(stderr,"write failed on channel 2 for 0x%x, error %d (%s)\n", buf[0], f, ftdi_get_error_string(ftdi2));
+        usleep(1 * 100000);
+*/	
+    }
+    }
+    printf("\n");
+
+    printf("disabling bitbang mode(channel 1)\n");
+    ftdi_disable_bitbang(ftdi);
+    ftdi_usb_close(ftdi);
+    ftdi_free(ftdi);
+
+    printf("disabling bitbang mode(channel 2)\n");
+    ftdi_disable_bitbang(ftdi2);
+    ftdi_usb_close(ftdi2);
+    ftdi_free(ftdi2);
+
+    return 0;
 }
+

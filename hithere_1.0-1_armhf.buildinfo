@@ -4,14 +4,14 @@ Binary: hithere
 Architecture: all
 Version: 1.0-1
 Checksums-Md5:
- b58c14dd7d60bf610a5b6c086471a1f5 4340 hithere_1.0-1_all.deb
+ f3d1eb9cfafc8280e025c03aa5af48fc 4912 hithere_1.0-1_all.deb
 Checksums-Sha1:
- 27aec55ea17fbe5c87e861b86765e9b3fa4f0f08 4340 hithere_1.0-1_all.deb
+ 1d6977b05dc2ba9f413537bcee7736bd6b297661 4912 hithere_1.0-1_all.deb
 Checksums-Sha256:
- 99529f028080e3a58b11f0e9c36e907bfdd1a6bb09cad2d18d666aa8dafbc891 4340 hithere_1.0-1_all.deb
+ d5a6e584844898ed66a2bc2c9b9ba504271ecfdf761ac46276f73117fa834d7f 4912 hithere_1.0-1_all.deb
 Build-Origin: Debian
 Build-Architecture: armhf
-Build-Date: Sun, 06 Jun 2021 17:42:14 +0000
+Build-Date: Mon, 07 Jun 2021 05:23:43 +0000
 Build-Tainted-By:
  merged-usr-via-symlinks
  usr-local-has-libraries
@@ -152,5 +152,6 @@ Installed-Build-Depends:
  zlib1g (= 1:1.2.11.dfsg-1)
 Environment:
  DEB_BUILD_OPTIONS="parallel=2"
- LANG="de_CH.UTF-8"
+ LANG="C.UTF-8"
+ LC_ALL="en_US.UTF-8"
  SOURCE_DATE_EPOCH="1290101132"
