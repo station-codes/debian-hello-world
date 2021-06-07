@@ -1,2 +1,0 @@
-dh_update_autotools_config
-override_dh_auto_build dh_auto_build
