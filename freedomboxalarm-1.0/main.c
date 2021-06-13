@@ -1,10 +1,5 @@
-/* bitbang_ft2232.c
-
+/* main.c
    Output some flickering in bitbang mode to the FT2232
-
-   Thanks to max@koeln.ccc.de for fixing and extending
-   the example for the second channel.
-
    This program is distributed under the GPL, version 2
 */
 
@@ -18,7 +13,7 @@ int main(int argc, char **argv) {
 	unsigned char buf[1];
 	int f,i;
 
-	// Init 1. channel
+	printf("init interface A\n")
 	if ((ftdi = ftdi_new()) == 0) {
 		fprintf(stderr, "ftdi_new failed\n");
 		return EXIT_FAILURE;
@@ -39,7 +34,7 @@ int main(int argc, char **argv) {
 	// Write data
 	printf("startloop\n");
 	while(1){
-
+		// loop over all 3 colors outputs (lowest 3 bits)
 		for (i = 0b0001; i <= 0b0111; i++){
 			buf[0] =  i<<4;
 			printf("porta: %02i: 0x%02x \n",i,buf[0]);
@@ -67,4 +62,3 @@ int main(int argc, char **argv) {
 
 	return 0;
 }
-
