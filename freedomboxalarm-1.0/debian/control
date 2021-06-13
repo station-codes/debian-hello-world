@@ -1,10 +1,10 @@
 Source: freedomboxalarm
 Section: misc
 Priority: extra
-Maintainer: Hélder Silva <hsilva@keep.pt>
+Maintainer: duchonic <duchonic@bluewin.ch>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.2
-Homepage: http://www.keep.pt/
+Homepage: station.codes 
 
 Package: freedomboxalarm
 Architecture: all 
