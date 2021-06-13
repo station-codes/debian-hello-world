@@ -13,7 +13,7 @@ int main(int argc, char **argv) {
 	unsigned char buf[1];
 	int f,i;
 
-	printf("init interface A\n")
+	printf("init interface A\n");
 	if ((ftdi = ftdi_new()) == 0) {
 		fprintf(stderr, "ftdi_new failed\n");
 		return EXIT_FAILURE;
