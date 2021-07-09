@@ -1,6 +1,4 @@
 #!/usr/bin/make -f
-%:
-	dh $@
 
-override_dh_auto_install:
-	$(MAKE) DESTDIR=$$(pwd)/debian/freedomboxalarm prefix=/usr install
+%:
+	dh $@ --with python3

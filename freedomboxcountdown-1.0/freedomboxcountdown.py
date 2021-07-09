@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import smbus
 import time
 
@@ -23,7 +25,6 @@ digit =[[0b00000000, 0b00111111],
         ]
     
 def write(a,b,c,d):
-
     bus.write_i2c_block_data(address, 0x00, [
         digit[a][1], digit[a][0] ,
         digit[b][1], digit[b][0] ,
@@ -31,10 +32,10 @@ def write(a,b,c,d):
         digit[c][1], digit[c][0] ,
         digit[d][1], digit[d][0]] )
 
-total_seconds = 1800 
+total_seconds = 3600*4 + 1800 + 7*60 
 
 while total_seconds >= 0:
-    minute, second = divmod(total_seconds, 60) 
+    minute, second = divmod(total_seconds%3600, 60) 
     write(minute/10, minute%10, second/10, second%10)
     total_seconds -= 1
     time.sleep(1)

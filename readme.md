@@ -10,6 +10,10 @@
 ### install
 
 > $ sudo dpkg -i ../freedombox_1.0-1_all.deb 
+  $ sudo dpkg --install ../*.deb
+
+ $ sudo dpkg --list
+ $ sudo dpkg --remove <package>
 
 #### ftdi lib (for build)
 

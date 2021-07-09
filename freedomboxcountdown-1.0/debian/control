@@ -1,13 +1,14 @@
-Source: freedomboxalarm
-Section: misc
-Priority: extra
+Source: freedomboxcountdown
+Section: python
+Priority: optional
 Maintainer: duchonic <duchonic@bluewin.ch>
-Build-Depends: debhelper (>= 9)
+Build-Depends: debhelper (>= 9), dh-python
 Standards-Version: 3.9.2
 Homepage: station.codes 
+X-Python-Version: >= 3.6
 
-Package: freedomboxalarm
+Package: freedomboxcountdown
 Architecture: all 
-Depends: ${shlibs:Depends}, ${ftdi1:Depends}, ${misc:Depends}
-Description: This is a dummy package with a hello world echo script 
- This is the long descriptin...
+Section: python
+Depends: ${misc:Depends}
+Description: litte lib to test some debian pakage

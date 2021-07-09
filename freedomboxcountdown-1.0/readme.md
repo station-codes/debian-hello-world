@@ -1,4 +1,4 @@
-# main.c
+# freedomboxcountdown.py 
 
-Connect to FTDI2232 Interface A and toggle some digital outputs (bitbang)
-
+Drive some 7-segment display throu i2c.
+Show some countdown.
