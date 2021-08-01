@@ -4,4 +4,5 @@
 .DS_Store
 hithere-1.0/hithere
 *.swp
-freedomboxalarm/
+freedomboxalarm-1.0/debian/freedomboxalarm/
+freedomboxalarm-1.0/freedomboxalarm
