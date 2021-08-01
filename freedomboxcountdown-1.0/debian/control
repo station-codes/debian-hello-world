@@ -11,4 +11,4 @@ Package: freedomboxcountdown
 Architecture: all 
 Section: python
 Depends: ${misc:Depends}
-Description: litte lib to test some debian pakage
+Description: a countdown device and playground with debian packages 

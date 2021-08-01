@@ -1,9 +1,9 @@
 Package: freedomboxcountdown
-Version: 1.0-1
+Version: 1.2-2
 Architecture: all
 Maintainer: duchonic <duchonic@bluewin.ch>
 Installed-Size: 12
 Section: python
 Priority: optional
 Homepage: https://station.codes
-Description: litte lib to test some debian pakage
+Description: a countdown device and playground with debian packages

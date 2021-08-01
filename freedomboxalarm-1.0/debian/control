@@ -9,5 +9,4 @@ Homepage: station.codes
 Package: freedomboxalarm
 Architecture: all 
 Depends: ${shlibs:Depends}, ${ftdi1:Depends}, ${misc:Depends}
-Description: This is a dummy package with a hello world echo script 
- This is the long descriptin...
+Description: A alarm lamp to indicate some stuff, test packages 
