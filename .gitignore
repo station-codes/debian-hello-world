@@ -4,5 +4,4 @@
 .DS_Store
 hithere-1.0/hithere
 *.swp
-freedomboxalarm-1.0/debian/freedomboxalarm/DEBIAN/md5sums
-freedomboxalarm-1.0/debian/freedomboxalarm/usr/bin/freedomboxalarm
+freedomboxalarm/
