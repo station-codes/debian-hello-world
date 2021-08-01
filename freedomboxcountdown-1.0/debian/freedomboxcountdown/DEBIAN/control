@@ -5,5 +5,5 @@ Maintainer: duchonic <duchonic@bluewin.ch>
 Installed-Size: 12
 Section: python
 Priority: optional
-Homepage: station.codes
+Homepage: https://station.codes
 Description: litte lib to test some debian pakage

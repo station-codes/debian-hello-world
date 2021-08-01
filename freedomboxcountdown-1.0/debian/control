@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: duchonic <duchonic@bluewin.ch>
 Build-Depends: debhelper (>= 9), dh-python
 Standards-Version: 3.9.2
-Homepage: station.codes 
+Homepage: https://station.codes
 X-Python-Version: >= 3.6
 
 Package: freedomboxcountdown
